@@ -1,3 +1,5 @@
 pythonnet==3.0.1
 pandas
 matplotlib
+PyYAML
+pytest
