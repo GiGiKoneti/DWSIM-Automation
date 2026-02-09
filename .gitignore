@@ -13,9 +13,8 @@ intel_dwsim_venv/
 # macOS
 .DS_Store
 
-# DWSIM Temporary & Results
+# DWSIM Temporary files
 *.dwsim_tmp
-results/
 logs/
 *.log
 

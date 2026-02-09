@@ -31,9 +31,9 @@ def _plot_reactor_trends(df, output_dir):
         return
 
     plt.figure(figsize=(10, 6))
-    for temp in sorted(data['Param_2'].unique()):
-        subset = data[data['Param_2'] == temp]
-        plt.plot(subset['Param_1'], subset['KPI_Value'], marker='o', linewidth=2, label=f'{temp} K')
+    for temp in sorted(data['Feed_Temp_K'].unique()):
+        subset = data[data['Feed_Temp_K'] == temp]
+        plt.plot(subset['Reactor_Vol_m3'], subset['KPI_Value'], marker='o', linewidth=2, label=f'{temp} K')
     
     plt.title('Isothermal Kinetic Reactor: Conversion vs. Volume', fontsize=14, fontweight='bold')
     plt.xlabel('Reactor Volume (m³)', fontsize=12)
@@ -50,9 +50,9 @@ def _plot_column_trends(df, output_dir):
         return
 
     plt.figure(figsize=(10, 6))
-    for stages in sorted(data['Param_1'].unique()):
-        subset = data[data['Param_1'] == stages]
-        plt.plot(subset['Param_2'], subset['KPI_Value'], marker='s', linewidth=2, label=f'{int(stages)} Stages')
+    for stages in sorted(data['Column_Stages'].unique()):
+        subset = data[data['Column_Stages'] == stages]
+        plt.plot(subset['Reflux_Ratio'], subset['KPI_Value'], marker='s', linewidth=2, label=f'{int(stages)} Stages')
     
     plt.title('Ethanol Fractionation: Purity vs. Reflux Ratio', fontsize=14, fontweight='bold')
     plt.xlabel('Reflux Ratio (R)', fontsize=12)
