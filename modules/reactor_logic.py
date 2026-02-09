@@ -43,14 +43,20 @@ def run_pfr_calculation(interf, flowsheet, volume, temp_k):
     outlet.SetOverallCompoundMolarFlow("Hydrogen", Double(h2_out))
     outlet.SetOverallCompoundMolarFlow("Ammonia", Double(nh3_out))
 
-    # 4. Thermal Equilibrium Solve
+    # 4. Thermal Equilibrium & Heat Duty Solve
+    # Isothermal Operation: Q_duty = Delta_H_formation * Reaction_Rate
+    # Stoichiometry: 1 N2 + 3 H2 -> 2 NH2 | Delta_H_rxn approx -92.2 kJ/mol
     interf.CalculateFlowsheet4(flowsheet)
+    
+    conversion_rate = (n2_in * yield_factor) # mols/s of N2 reacted
+    heat_duty_kw = conversion_rate * 92.2 # Exothermic removal required for isothermal 
     
     return {
         "success": True,
         "conversion": conversion_pct,
         "outlet_temp": outlet.GetTemperature(),
         "outlet_B_flow": outlet.GetCompoundMolarFlow("Ammonia"),
+        "heat_duty": heat_duty_kw, # Report heat duty as required by Task 2
         "error": ""
     }
 

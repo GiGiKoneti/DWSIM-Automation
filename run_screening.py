@@ -43,6 +43,7 @@ def run_pfr_case(args):
         "Unit": "PFR", "Param_1": vol, "Param_2": temp,
         "Solved": res["success"], "KPI_Value": res["conversion"],
         "Outlet_B_Flow": res["outlet_B_flow"], "Outlet_Temp": res["outlet_temp"],
+        "Heat_Duty": res["heat_duty"],
         "Error": res["error"]
     }
 
@@ -56,6 +57,7 @@ def run_col_case(args):
         "Unit": "Column", "Param_1": stages, "Param_2": reflux,
         "Solved": res["success"], "KPI_Value": res["purity"],
         "Condenser_Duty": res["condenser_duty"], "Reboiler_Duty": res["reboiler_duty"],
+        "Feed_Stage": res["feed_stage"],
         "Error": res["error"]
     }
 
