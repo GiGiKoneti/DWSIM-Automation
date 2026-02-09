@@ -1,0 +1,28 @@
+# DWSIM Automation Configuration
+# ==============================
+
+system:
+  bundle_path: "/Applications/DWSIM.app/Contents/MonoBundle/"
+  log_file: "results/simulation.log"
+  # Set to true to utilize multi-core processing
+  parallel_execution: true
+
+sweep_params:
+  # Reactor (PFR) configurations
+  pfr:
+    volumes: [1.0, 2.0]
+    temperatures: [300.0, 500.0]
+  
+  # Distillation (Column) configurations
+  column:
+    stages: [10, 20]
+    reflux_ratios: [1.0, 5.0]
+
+thermodynamics:
+  # Default property packages
+  reactor_pp: "Peng-Robinson (PR)"
+  column_pp: "NRTL"
+
+verifications:
+  # Allowed deviation in mass balance (relative error)
+  mass_balance_tolerance: 1e-6

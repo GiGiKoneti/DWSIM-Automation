@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+dwsim_venv/
+venv/
+intel_dwsim_venv/
+.env
+
+# macOS
+.DS_Store
+
+# DWSIM Temporary & Results
+*.dwsim_tmp
+results/
+logs/
+*.log
+
+# Scripts
+*.sh
